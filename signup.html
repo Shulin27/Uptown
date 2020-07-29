@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="fonts/fonts_signup/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="css/css_signup/style.css">
+
+
+    <script> 
+
+function validate_email(x)  
+{  
+var atposition=x.indexOf("@");  
+var dotposition=x.lastIndexOf(".");  
+if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length){  
+  alert("Please enter a valid e-mail address");  
+  return false;  
+  }  
+} 
+
+function validateSignupForm()                                    
+{ 
+    var form_name = document.forms["signup-form"]["name"];               
+    var form_email = document.forms["signup-form"]["email"];    
+    var form_phone = document.forms["signup-form"]["phone"];  
+    var form_password = document.forms["signup-form"]["password"];  
+    var form_re_password = document.forms["signup-form"]["re_password"];  
+   
+    if (form_name.value == "")                                  
+    { 
+        window.alert("Please enter your name."); 
+        form_name.focus(); 
+        return false; 
+    } 
+       
+    if (form_email.value == "")                                   
+    { 
+        window.alert("Please enter a valid e-mail address."); 
+        form_email.focus(); 
+        return false; 
+    } 
+   
+    if (form_phone.value == "")                           
+    { 
+        window.alert("Please enter your telephone number."); 
+        form_phone.focus(); 
+        return false; 
+    } 
+   
+    if (form_password.value == "")                        
+    { 
+        window.alert("Please enter your password"); 
+        form_password.focus(); 
+        return false; 
+    } 
+
+    if (form_re_password.value == "")                        
+    { 
+        window.alert("Please re-enter your password"); 
+        form_re_password.focus(); 
+        return false; 
+    } 
+
+    if (form_re_password.value != form_password.value)                        
+    { 
+        window.alert("The re-entered password does not matches with previous password!!Try Again"); 
+        form_re_password.focus(); 
+        return false; 
+    } 
+   var numbers = /^[0-9]+$/;
+      if(!form_phone.value.match(numbers))                       
+    { 
+        window.alert("Only digits are allowed in this field"); 
+        form_phone.focus(); 
+        return false; 
+    } 
+
+    if ((form_phone.value).length!=10)                        
+    { 
+        window.alert("The phone number must be of 10 digits only!!"); 
+        form_phone.focus(); 
+        return false; }
+  
+    if ((form_password.value).length>10)                        
+    { 
+        window.alert("The password should not be more than of 10 characters"); 
+        form_password.focus(); 
+        return false; 
+    } 
+
+    if (validate_email(form_email.value)==false)                        
+    { 
+        form_email.focus(); 
+        return false; 
+    } 
+
+    return true; 
+};</script> 
+
+
+</head>
+<body>
+
+    <div class="main">
+
+        <section class="signup">
+            
+            <div class="container">
+                <div class="signup-content">
+                    <form method="GET" name="signup-form" id="signup-form" action="signup.php" onsubmit="return validateSignupForm()" class="signup-form">
+                        <h2 class="form-title">Create account</h2>
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="name" id="name" placeholder="Your Name"  />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="phone" id="phone" placeholder="Your Phone Number" />
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" name="email" id="email" placeholder="Your Email" />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-input" name="password" id="password" placeholder="Password" />
+<!--                             <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+ -->                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-input" name="re_password" id="re_password" placeholder="Repeat your password" />
+                        </div>
+                        <!-- <div class="form-group">
+                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                            <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                        </div> -->
+                        <div class="form-group">
+                            <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up"/>
+                        </div>
+                    </form>
+                    <p class="loginhere">
+                        Have already an account ? <a href="login.html" class="loginhere-link">Login here</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS -->
+<!--     <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+ --></body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="fonts/fonts_login/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/fonts_login/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="css/css_login/util.css">
+	<link rel="stylesheet" type="text/css" href="css/css_login/main.css">
+
+	<script> 
+
+function validate_email(x)  
+{  
+var atposition=x.indexOf("@");  
+var dotposition=x.lastIndexOf(".");  
+if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length){  
+  alert("Please enter a valid e-mail address \n atpostion:"+atposition+"\n dotposition:"+dotposition);
+  return false;  
+  }  
+} 
+
+function validateLoginForm()                                    
+{ 
+    var form_email = document.forms["login-form"]["email"];    
+    var form_password = document.forms["login-form"]["pass"];  
+      
+    if (form_email.value == "")                                   
+    { 
+        window.alert("Please enter a valid e-mail address."); 
+        form_email.focus(); 
+        return false; 
+    } 
+   
+    if (form_password.value == "")                        
+    { 
+        window.alert("Please enter your password"); 
+        form_password.focus(); 
+        return false; 
+    } 
+
+    if ((form_password.value).length>10)                        
+    { 
+        window.alert("The password should not be more than of 10 characters"); 
+        form_password.focus(); 
+        return false; 
+    } 
+
+    if (validate_email(form_email.value)==false)                        
+    { 
+        form_email.focus(); 
+        return false; 
+    } 
+
+    return true; 
+}</script> 
+
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+				<form action="login.php" onsubmit="return validateLoginForm()" id="login-form" name="login-form" method="GET">
+					<span class="login100-form-title p-b-33">
+						Account Login
+					</span>
+
+					<div>
+						<input class="input100" type="text" name="email" placeholder="Email">
+ 					</div>
+
+					<div>
+						<input class="input100" type="password" name="pass" placeholder="Password">
+ 					</div>
+
+					<div class="container-login100-form-btn m-t-20">
+						<button class="login100-form-btn">
+							Log in
+						</button>
+					</div>
+					<div class="text-center">
+						<span class="txt1">
+							Create an account?
+						</span>
+
+						<a href="signup.html" class="txt2 hov1">
+							Sign up
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
